@@ -20,7 +20,7 @@ const CreatePost = () => {
     if(form.prompt && form.photo) {
       setloading(true);
       try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
+        const response = await fetch('https://image-generator-peter.onrender.com/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const CreatePost = () => {
     if(form.prompt) {
       try {
         setgeneratingImg(true);
-        const response = await fetch('http://localhost:8080/api/v1/dalle',
+        const response = await fetch('https://image-generator-peter.onrender.com/api/v1/dalle',
         {
           method: 'POST',
           headers: {
@@ -64,7 +64,7 @@ const CreatePost = () => {
         const data = await response.json();
         setform({ ...form, photo: `data:image/jpeg;base64,${data.photo}`})
       } catch (error) {
-        alert(error);
+        alert('Credits for DALL-E API has been used up. Please try again later or contact your developer for more information');
       } finally {
         setgeneratingImg(false);
       }
